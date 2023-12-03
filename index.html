@@ -164,7 +164,7 @@
 					
 				</div>
 
-                <div class="experience" id="experience">
+				<div class="experience" id="experience">
 					<div class="content-inner">
 						<div class="content-header">
 							<h2>EXPERIENCE</h2>
@@ -177,18 +177,28 @@
 
 				<script>
 					// Fetch experience entries using AJAX
-					fetch('experience_data.php')
-						.then(response => response.text())
+					fetch('experience_data.json') // Assuming you have a JSON file with your data
+						.then(response => response.json())
 						.then(data => {
 							// Update the content of the experience container
-							document.getElementById('experienceContainer').innerHTML = data;
+							const experienceContainer = document.getElementById('experienceContainer');
+							data.forEach(entry => {
+								experienceContainer.innerHTML += `
+									<div class="col-md-6">
+										<div class="exp-col">
+											<span>${entry.start_date} to ${entry.end_date ? entry.end_date : 'Present'}</span>
+											<h3>${entry.company}</h3>
+											<h4>${entry.location}</h4>
+											<h5>${entry.job_title}</h5>
+										</div>
+									</div>`;
+							});
 						})
 						.catch(error => {
 							// Handle errors if needed
 							console.error('Failed to fetch experience entries.', error);
 						});
 				</script>
-
 				
 				<div class="section-space">
 					
