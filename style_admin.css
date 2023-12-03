@@ -1,0 +1,96 @@
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about-paragraph {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#about-paragraph:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+form {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+	margin:2px;
+}
+
+#about-form {
+	margin-bottom:30px;
+}
+
+/* Add New Skill Form styles */
+.add-new-form input,
+.modify-existing-form input,
+.delete-form select,
+.delete-form button {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.add-new-form button,
+.modify-existing-form button,
+.delete-form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.add-new-form button:hover,
+.modify-existing-form button:hover,
+.delete-form button:hover {
+    background-color: #45a049;
+}
+
+/* Dropdown styles */
+.add-new-form select,
+.modify-existing-form select {
+    width: 100%;
+    padding: 8px;
+	margin-bottom:5px;
+}
+
+/* Delete Skill Form button style */
+.delete-form button {
+    background-color: #f44336;
+}
+
+.delete-form button:hover {
+    background-color: #d32f2f;
+}
+
