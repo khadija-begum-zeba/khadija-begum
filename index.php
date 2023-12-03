@@ -138,117 +138,85 @@
 						<div class="content-header">
 							<h2>EDUCATION</h2>
 						</div>
-						<div class="row align-items-center">
-							<?php
-							include('connect_db.php');
-
-							// Fetch education entries from the database
-							$result = $conn->query("SELECT degree, program, institute, cgpa_gpa FROM education");
-
-							// Check if there are any entries
-							if ($result->num_rows > 0) {
-								while ($row = $result->fetch_assoc()) {
-									echo '<div class="col-md-6">';
-									echo '<div class="edu-col">';
-									echo '<h3>' . $row['degree'] . '</h3>';
-									echo '<p>';
-									echo $row['program'] . '<br>';
-									echo $row['institute'] . '<br>';
-									echo 'CGPA/GPA - ' . $row['cgpa_gpa'];
-									echo '</p>';
-									echo '</div>';
-									echo '</div>';
-								}
-							} else {
-								echo '<p>No education entries found</p>';
-							}
-
-							// Close the database connection
-							$conn->close();
-							?>
+						<div class="row align-items-center" id="educationContainer">
+							
+							<!-- Education entries will be dynamically added here -->
 						</div>
 					</div>
 				</div>
+				<script>
+					// Fetch education entries using AJAX
+					fetch('education_data.php')
+						.then(response => response.text())
+						.then(data => {
+							// Update the content of the education container
+							document.getElementById('educationContainer').innerHTML = data;
+						})
+						.catch(error => {
+							// Handle errors if needed
+							console.error('Failed to fetch education entries.', error);
+						});
+				</script>
 
 				<div class="section-space">
 					
 				</div>
 
                 <div class="experience" id="experience">
-                    <div class="content-inner">
-                        <div class="content-header">
-                            <h2>EXPERIENCE</h2>
-                        </div>
-                        <div class="row align-items-center">
-							<?php
-							include('connect_db.php');
-
-							// Fetch experience entries from the database
-							$result = $conn->query("SELECT job_title, company, location, start_date, end_date FROM experience");
-
-							// Check if there are any entries
-							if ($result->num_rows > 0) {
-								while ($row = $result->fetch_assoc()) {
-									echo '<div class="col-md-6">';
-									echo '<div class="exp-col">';
-									echo '<span>' . $row['start_date'] . ' <i>to</i> ' . ($row['end_date'] ? $row['end_date'] : 'Present') . '</span>';
-									echo '<h3>' . $row['company'] . '</h3>';
-									echo '<h4>' . $row['location'] . '</h4>';
-									echo '<h5>' . $row['job_title'] . '</h5>';
-									echo '</div>';
-									echo '</div>';
-								}
-							} else {
-								echo '<p>No experience entries found</p>';
-							}
-
-							// Close the database connection
-							$conn->close();
-							?>
+					<div class="content-inner">
+						<div class="content-header">
+							<h2>EXPERIENCE</h2>
 						</div>
+						<div class="row align-items-center" id="experienceContainer">
+							<!-- Experience entries will be dynamically added here -->
+						</div>
+					</div>
+				</div>
 
-                    </div>
-                </div>
+				<script>
+					// Fetch experience entries using AJAX
+					fetch('experience_data.php')
+						.then(response => response.text())
+						.then(data => {
+							// Update the content of the experience container
+							document.getElementById('experienceContainer').innerHTML = data;
+						})
+						.catch(error => {
+							// Handle errors if needed
+							console.error('Failed to fetch experience entries.', error);
+						});
+				</script>
+
 				
 				<div class="section-space">
 					
 				</div>
 
                 <div class="portfolio" id="portfolio">
-                    <div class="content-inner">
-                        <div class="content-header">
-                            <h2>PORTFOLIO</h2>
-                        </div>
-                        <div class="row portfolio-container">
-							<?php
-							include('connect_db.php');
-
-							// Fetch portfolio entries from the database
-							$result = $conn->query("SELECT category, project_name, image_path FROM portfolio");
-
-							// Check if there are any entries
-							if ($result->num_rows > 0) {
-								while ($row = $result->fetch_assoc()) {
-									echo '<div class="col-lg-4 col-md-6 portfolio-item ' . $row['category'] . '">';
-									echo '<div class="portfolio-wrap">';
-									echo '<figure>';
-									echo '<img src="' . $row['image_path'] . '" class="img-fluid" alt="">';
-									echo '<a href="' . $row['image_path'] . '" data-lightbox="portfolio" data-title="' . $row['project_name'] . '" class="link-preview" title="Preview"><i class="fa fa-eye"></i></a>';
-									echo '<a class="portfolio-title" href="#">' . $row['project_name'] . ' <span>' . $row['category'] . '</span></a>';
-									echo '</figure>';
-									echo '</div>';
-									echo '</div>';
-								}
-							} else {
-								echo '<p>No portfolio entries found</p>';
-							}
-
-							// Close the database connection
-							$conn->close();
-							?>
+					<div class="content-inner">
+						<div class="content-header">
+							<h2>PORTFOLIO</h2>
 						</div>
-                    </div>
-                </div>
+						<div class="row portfolio-container" id="portfolioContainer">
+							<!-- Portfolio entries will be dynamically added here -->
+						</div>
+					</div>
+				</div>
+
+				<script>
+					// Fetch portfolio entries using AJAX
+					fetch('portfolio_data.php')
+						.then(response => response.text())
+						.then(data => {
+							// Update the content of the portfolio container
+							document.getElementById('portfolioContainer').innerHTML = data;
+						})
+						.catch(error => {
+							// Handle errors if needed
+							console.error('Failed to fetch portfolio entries.', error);
+						});
+				</script>
+
 				
 				<div class="section-space">
 					
